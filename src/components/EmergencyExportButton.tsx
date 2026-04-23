@@ -21,6 +21,7 @@ import iconSvg from '../../public/icon.svg?raw';
 import appTsx from '../App.tsx?raw';
 import mainTsx from '../main.tsx?raw';
 import indexCss from '../index.css?raw';
+import viteEnvDts from '../vite-env.d.ts?raw';
 
 // Src Lib & Hooks
 import utilsTs from '../lib/utils.ts?raw';
@@ -73,6 +74,7 @@ export function EmergencyExportButton() {
       srcFolder!.file("App.tsx", appTsx);
       srcFolder!.file("main.tsx", mainTsx);
       srcFolder!.file("index.css", indexCss);
+      srcFolder!.file("vite-env.d.ts", viteEnvDts);
 
       // Src Lib & Hooks
       libFolder!.file("utils.ts", utilsTs);

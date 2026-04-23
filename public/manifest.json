@@ -2,7 +2,7 @@
   "name": "SME Affectation System",
   "short_name": "SME/CADEX",
   "description": "An automated tool for CIS Operators to manage logistics and workforce distribution.",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#4f46e5",

@@ -1,9 +1,9 @@
-const CACHE_NAME = 'sme-affectation-v1';
+const CACHE_NAME = 'sme-affectation-v2';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon.svg'
+  './',
+  './index.html',
+  './manifest.json',
+  './icon.svg'
 ];
 
 self.addEventListener('install', (event) => {
@@ -30,15 +30,32 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+  
   event.respondWith(
     caches.match(event.request)
-      .then((response) => {
-        // Return cached response if found
-        if (response) {
-          return response;
+      .then((cachedResponse) => {
+        if (cachedResponse) {
+          // Fetch from network and update cache in background
+          fetch(event.request).then(response => {
+             if(response && response.status === 200) {
+               caches.open(CACHE_NAME).then(cache => cache.put(event.request, response));
+             }
+          }).catch(() => {});
+          return cachedResponse;
         }
-        // Otherwise, fetch from network
-        return fetch(event.request);
+
+        // Otherwise, fetch from network and cache
+        return fetch(event.request).then((response) => {
+          if(!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+          return response;
+        });
       })
   );
 });
