@@ -1,20 +1,24 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# SME/CADEX Affectation Management System
 
-# Run and deploy your AI Studio app
+An automated professional React application for CIS Operators to manage logistics and workforce distribution. Designed specifically for SME/CADEX operations.
 
-This contains everything you need to run your app locally.
+## Technologies Used
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS v4
+- PWA Configuration
 
-View your app in AI Studio: https://ai.studio/apps/6411189a-f79b-4457-9ce8-a33ab3404e06
+## Local Development
+1. Run `npm install` to install dependencies.
+2. Run `npm run dev` to start the local development server.
 
-## Run Locally
+## Deploying to GitHub Pages (Automated & Manual)
 
-**Prerequisites:**  Node.js
+This repository includes a ready-to-use GitHub Actions workflow.
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. Upload/push this complete repository to a new repository on GitHub.
+2. Go to your GitHub repository settings: **Settings > Pages**.
+3. Under **Build and deployment**, ensure the **Source** is set to **GitHub Actions**, and a deployment will start automatically.
+4. If you face a blank page, ensure this code includes the `base: './'` inside `vite.config.ts` and the `.nojekyll` file inside the `public/` directory (both included here).
+5. Once green, your PWA app will be live and accessible!
